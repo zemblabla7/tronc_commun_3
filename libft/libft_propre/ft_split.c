@@ -17,99 +17,115 @@
 // ne pas oublier de free!!!
 // voir commentaire plus bas : il manque une sous-fonction
 
-int     check_sep(char *str, int i, char c)
+
+////////////// EFFACER
+
+#include <stddef.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+size_t	ft_strlen(const char *s)
 {
-	while(str[i])
-	{
-		if (str[i] == c)
-			return 1;
-		//else
-		//return 0;
-	}
-	return 0;
-}
-
-char    words(char *str, int i, char c)
-{
-	char *word;
-	int word_length;
-
-	word = malloc(sizeof(char) * (word_length + 1));
-	//  je ne sais pas pourquoi les deux prochaines lignes posent probleme mais il faut penser a les remettre!!
-	//if (word == NULL)
-	//return (NULL);
-	word_length = 0;
-
-	while(str[i])
-	{
-		while(check_sep(str, i, c) == 0)
-		{
-			i++;
-			word_length++;
-			word[word_length] = str[i];
-		}
-	}
-	return(*word);
-}
-
-int strlen_total(char *str, char c)
-{
-	int i;
-	int j;
+	int	i;
 
 	i = 0;
-	j = 0;
-	while (str[i])
+	while (s[i])
 	{
-		if (check_sep(str, i, c) == 0)
-			j++;
 		i++;
 	}
-	return (j);
+	return (i);
+}
+
+//////////////////////////
+
+int     check_sep(char current, char c)
+{
+		if (current == c || current == '\0')
+			return 1;
+		else
+            return 0;
+}
+
+char    count_words(char *str, char c)
+{
+	int nb_of_words;
+	int i;
+
+	nb_of_words = 0;
+	i = 0;
+	while(str[i])
+	{
+		if(check_sep(str[i], c) == 0 && check_sep(str[i + 1], c) == 1)
+		{
+			nb_of_words++;
+		}
+		i++;
+	}
+	return(nb_of_words);
+}
+
+void write_words(char *dest, const char *src, char c)
+{
+    int i;
+
+    i = 0;
+    while (check_sep(src[i], c) == 0)
+    {
+        dest[i] = src[i];
+		i++;
+    }
+    dest[i] = '\0';
+}
+
+int	write_split(char **string, const char *str, char c) // pourquoi int??
+{
+	size_t	j;
+	size_t	i;
+	size_t	word;
+
+	word = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (check_sep(str[i], c) == 1)
+			i++;
+		else
+		{
+			j = 0;
+			while (check_sep(str[j], c) == 0)
+				j++;
+			string[word] = (char *)malloc(sizeof(char) * (j + 1));
+			if (string == NULL)
+				return (EXIT_FAILURE);
+			write_words(string[word], str, c);
+			str = str + j; // str + j = str[j] donc le str envoyé dans write_words ne vaudra plus str[0] mais str[j].
+			word++;
+		}
+	}
+	return (EXIT_SUCCESS);
 }
 
 char **ft_split(char const *s, char c)
 {
 	char **string;
-	char *str;
-	int i;
-	int a;
-	int b;
+	int words;
 
-	//string = malloc(sizeof(char) * (strlen_total(str, c) + 1));
-	//string = malloc(sizeof(char *) * (nombredestrings + 1)); 
-	/*ecrire une fonction qui compte le nombre de strings 
-	(donc nombre de mots), car qd on fait un malloc pour un tableau de double
-	pointeur alors le malloc n'est pas pour le nombre de lettres mais pour 
-	le nombre de mots (puis apres on malloc words pour le nombre de lettres). */
-	if (string == NULL)
-		return (NULL);
-	str = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (str == NULL)
-		return (NULL);
-	i = 0;
-	while(s[i])
+	words = count_words((char *)s, c);
+	string = (char **)malloc(sizeof(char *) * (words + 1));
+	if (string == NULL || s == NULL)
+        return (NULL);
+    if (write_split(string, (char *)s, c) == EXIT_FAILURE)
 	{
-		str[i] = ((char *)s)[i];
-		i++;
+		while (words > 0)
+			free(string[--words]); // on decremente avant pq dans les [] c est tjrs un nb en moins
+		free(string);
+		//string = NULL;
 	}
-	str[i] = '\0';
-	i = 0;
-	a = 0;
-	b = 0;
-	while(str[i])
-	{
-		while(check_sep(str, i, c) == 0)
-		{
-			string[a][b] = words(str, i, c);
-			b++;
-			i++;
-		}
-		while (check_sep(str, i, c) == 1)
-			i++;
-		a++;
-	}
-	return(string);
+	return (string);
+
 }
 
 /* MAIN DE PISCINE modifi� pour essayer a 42
@@ -139,5 +155,15 @@ int main()
 	char s[] = "me llamo carolina y tengo hambre";
 	char c = ' ';
 
-	printf("%s\n", *ft_split(s, c));
+	//printf("%s\n", *ft_split(s, c));
+
+	int i = 0;
+	char **split;
+	split = ft_split(s, c);
+	while(split[i])
+    {
+        printf("%s\n", split[i]);
+        i++;
+    }
+    return 0;
 }
