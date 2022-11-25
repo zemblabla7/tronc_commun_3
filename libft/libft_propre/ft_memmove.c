@@ -6,13 +6,11 @@
 /*   By: casomarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:18:58 by casomarr          #+#    #+#             */
-/*   Updated: 2022/11/21 17:55:59 by casomarr         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:50:22 by casomarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-// modifié : vérifier si now passe tests warmachine. Avant je n'avais que la partie dans le "else".
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
@@ -30,12 +28,12 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	else
 	{
-        while (i < n)
-        {
-            temp = ((char *)(src))[i];
-            ((char *)dest)[i] = temp;
-            i++;
-        }
+		while (i < n)
+		{
+			temp = ((char *)(src))[i];
+			((char *)dest)[i] = temp;
+			i++;
+		}
 	}
 	return ((void *)dest);
 }

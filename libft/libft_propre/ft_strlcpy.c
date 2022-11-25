@@ -6,7 +6,7 @@
 /*   By: casomarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:49:48 by casomarr          #+#    #+#             */
-/*   Updated: 2022/11/21 15:46:00 by casomarr         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:52:22 by casomarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		i = ft_strlen(src);
 	if (size > 0)
 	{
-		while (src[i] != '\0')
+		while (src[i] != '\0' && i < (size - 1))
 		{
 			dst[i] = src[i];
 			i++;

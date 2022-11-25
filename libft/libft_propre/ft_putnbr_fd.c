@@ -6,13 +6,13 @@
 /*   By: casomarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:30:55 by casomarr          #+#    #+#             */
-/*   Updated: 2022/11/23 18:00:24 by casomarr         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:47:28 by casomarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	unsigned int	nbr;
 

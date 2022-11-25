@@ -6,7 +6,7 @@
 /*   By: casomarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:00:48 by casomarr          #+#    #+#             */
-/*   Updated: 2022/11/23 16:17:24 by casomarr         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:56:15 by casomarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	checkset(char c, char *set)
 static int	checkbeggining(char *str, char *set)
 {
 	int	i;
-	int found;
+	int	found;
 
 	i = 0;
 	found = 0;
@@ -52,7 +52,7 @@ static int	checkbeggining(char *str, char *set)
 static int	checkending(char *str, char *set)
 {
 	int	n;
-	int found;
+	int	found;
 
 	n = ft_strlen(str);
 	found = 0;
