@@ -12,24 +12,12 @@
 
 #include "libft.h"
 
-int     word_length(char *str, char c)
+int     check_sep(char current, char c)
 {
-	int	i;
-	int letters;
-	
-	i = 0;
-	letters = 0;
-	while(str[i])
-	{
-		if (str[i] == c || str[i] == '\0')
-			i++;
-		if (str[i] != c && str[i] != '\0')
-		{
-			while (str[i] != c && str[i] != '\0')
-				letters++;
-			return (letters);
-		}
-	}
+		if (current == c || current == '\0')
+			return 1;
+		else
+            return 0;
 }
 
 char    count_words(char *str, char c)
@@ -41,7 +29,7 @@ char    count_words(char *str, char c)
 	i = 0;
 	while(str[i])
 	{
-		if((str[i] != c && str[i] != '\0') && (str[i + 1] == c || && str[i + 1] == '\0')
+		if(check_sep(str[i], c) == 0 && check_sep(str[i + 1], c) == 1)
 		{
 			nb_of_words++;
 		}
@@ -55,7 +43,7 @@ void write_words(char *dest, const char *src, char c)
     int i;
 
     i = 0;
-    while (src[i] != c || str[i] != '\0')
+    while (check_sep(src[i], c) == 0)
     {
         dest[i] = src[i];
 		i++;
@@ -65,17 +53,28 @@ void write_words(char *dest, const char *src, char c)
 
 int	write_split(char **string, const char *str, char c) // pourquoi int??
 {
+	size_t	j;
+	size_t	i;
 	size_t	word;
 
 	word = 0;
-	while (word <= count_words(str, c))
-	{	
-			string[word] = malloc(sizeof(char) * (word_length(str, c) + 1));
+	i = 0;
+	while (str[i])
+	{
+		if (check_sep(str[i], c) == 1)
+			i++;
+		else
+		{
+			j = 0;
+			while (check_sep(str[j], c) == 0)
+				j++; // pour obtenir la longeur du mot pour le malloc
+			string[word] = malloc(sizeof(char) * (j + 1));
 			if (string == NULL)
 				return (EXIT_FAILURE);
 			write_words(string[word], str, c);
-			str = str + word_length(str, c); // str + j = str[j] donc le str envoyé dans write_words ne vaudra plus str[0] mais str[j].
+			str = str + j; // str + j = str[j] donc le str envoyé dans write_words ne vaudra plus str[0] mais str[j].
 			word++;
+		}
 	}
 	return (EXIT_SUCCESS);
 }
