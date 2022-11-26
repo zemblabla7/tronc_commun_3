@@ -12,29 +12,6 @@
 
 #include "libft.h"
 
-////////// A EFFACER
-
-#include <stddef.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
-
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
-///////////////////////////////////////////
-
 static int	checkset(char c, char *set)
 {
 	int	i;
