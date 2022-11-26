@@ -12,6 +12,29 @@
 
 #include "libft.h"
 
+////////// A EFFACER
+
+#include <stddef.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+size_t	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	return (i);
+}
+
+///////////////////////////////////////////
+
 static int	checkset(char c, char *set)
 {
 	int	i;
@@ -19,7 +42,7 @@ static int	checkset(char c, char *set)
 	i = 0;
 	while (set[i])
 	{
-		if (c == set[i])
+		if (set[i] == c)
 			return (1);
 		i++;
 	}
@@ -54,7 +77,7 @@ static int	checkending(char *str, char *set)
 	int	n;
 	int	found;
 
-	n = ft_strlen(str);
+	n = ft_strlen(str) - 1;
 	found = 0;
 	while (n >= 0)
 	{
@@ -89,21 +112,24 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	j = 0;
 	if (i == n)
-		return (NULL); // pas sure de comprendre ce que je dois rendre dans ce cas. Dans warmachine il y a juste rien, pas null.
-	while (i <= n)
-		newstr[j++] = s1[i++];
-	newstr[j] = '\0';
+		newstr[0] = '\0'; // pas sure de comprendre ce que je dois rendre dans ce cas. Dans warmachine il y a juste rien, pas null.
+	else
+    {
+        while (i <= n)
+            newstr[j++] = s1[i++];
+        newstr[j] = '\0';
+    }
 	return (newstr);
 }
 
-/*
+
 int main ()
 {
     //char str[] = "lorem \n ipsum \t dolor \n sit \t amet";
     //char set[] = "";
 
-	//char str[] = " lorem ipsum dolor sit amet";
-    //char set[] = "l ";
+	//char str[] = "lorem ipsum dolor sit amet";
+    //char set[] = "lorem amet";
 
 	char str[] = "ccc";
     char set[] = "c";
@@ -112,4 +138,4 @@ int main ()
 
     return(0);
 }
-*/
+
