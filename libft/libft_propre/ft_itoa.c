@@ -10,10 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//PAS FINI
-
-// inverse de atoi : convert integer to string
-
 #include "libft.h"
 
 char reverse(char *string)
@@ -23,7 +19,7 @@ char reverse(char *string)
 	char temp;
 
 	i = 0;
-	len = ft_strlen(string);
+	len = ft_strlen(string) - 1;
 	while (string[i])
 	{
 		temp = string[i];
@@ -38,22 +34,18 @@ char reverse(char *string)
 char *ft_itoa(int n)
 {
 	char *string;
-	char temp;
 	int len; // longueur de l'int (nb de chiffres)
 	int i;
-	int nb;
-	
+	unsigned int nb;
+
 	nb = n;
-	len = 0;
-	while (nb > 9)
+	len = 1; // car dès que le nb est pile >=10 il faut rajouter 1
+	while (nb >= 10)
 	{
 		nb = nb / 10;
 		len++;
 	}
-	if (nb < 10)
-		len++;
-	string = malloc(sizeof(char) * len);
-	//string = malloc(sizeof(char) * 2); // a remplacer qd je saurais comment calculer len et sinon utiliser calloc au lieu de malloc
+	string = malloc(sizeof(char) * (len + 1));
 	if (string == NULL)
 		return (NULL);
 	i = 0;
@@ -62,24 +54,35 @@ char *ft_itoa(int n)
 		string[i] = '-';
 		i++;
 	}
-	while (n >= 10)
+	nb = n;
+	while (nb >= 10)
 	{
-		string[i] = n % 10 + '0'; // donne un resultat a plusieurs chiffres donc besoin de plus d un espace pour etre ecrit dans la string donc il faut trouver la facon d ecrire string[i; i+1, i+2] = n % 10 + '0';
+		string[i] = nb % 10 + '0';
+		nb = nb / 10;
 		i++;
 	}
-	//if (n < 10)
-		//string[i] = n + '0';
-	string[i] = '\0';
+	if (nb < 10)
+        string[i] = nb + '0';
+	string[i + 1] = '\0';
 	return(reverse(string));
 }
 
-
-
+/* main ne marche pas mais sur C tutor je vois que le resultat est bon
 int main()
 {
 	int n = 45;
-	printf("%s\n, (char *)ft_itoa(n)");
+	int		len;
+
+	len = 0;
+	char *res;
+	res = malloc(sizeof(char) * 3);
+	res = ft_itoa(n);
+    while (res[len])
+		len++;
+	write(1, res, len);
+    free(res);
+
 	return(0);
 }
-
+*/
 
