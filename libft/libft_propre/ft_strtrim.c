@@ -89,30 +89,42 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	j = 0;
 	if (i == n)
-		newstr[0] = '\0'; // pas sure de comprendre ce que je dois rendre dans ce cas. Dans warmachine il y a juste rien, pas null.
+		newstr[0] = '\0';
 	else
-    {
-        while (i <= n)
-            newstr[j++] = s1[i++];
-        newstr[j] = '\0';
-    }
+	{
+		while (i <= n)
+			newstr[j++] = s1[i++];
+		newstr[j] = '\0';
+	}
 	return (newstr);
 }
 
-
-int main ()
+/*
+int main (int argv, char **argc)
 {
-    //char str[] = "lorem \n ipsum \t dolor \n sit \t amet";
-    //char set[] = "";
+	//char str[] = "lorem \n ipsum \t dolor \n sit \t amet";
+	//char set[] = "";
 
 	//char str[] = "lorem ipsum dolor sit amet";
-    //char set[] = "lorem amet";
+	//char set[] = "lorem amet";
 
-	char str[] = "ccc";
-    char set[] = "c";
+	//char str[] = "ccc";
+	//char set[] = "c";
 
-    printf("%s", ft_strtrim(str, set));
+	if (argv == 3)
+		printf("%s", ft_strtrim(argc[1], argc[2]));
 
-    return(0);
+	return(0);
 }
+*/
+/*
+int main ()
+{
+	char str[] = "lorem \n ipsum \t dolor \n sit \t amet";
+	char set[] = " ";
 
+	printf("%s", ft_strtrim(str, set));
+
+	return(0);
+}
+*/

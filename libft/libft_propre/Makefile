@@ -30,15 +30,17 @@ FILES = ft_isalpha.c	\
 	ft_strjoin.c	\
 	ft_strtrim.c	\
 	ft_split.c	\
-	ft_itoa.c	\
+	#ft_itoa.c	\
 	ft_strmapi.c	\
 	ft_striteri.c	\
 	ft_putchar_fd.c	\
 	ft_putstr_fd.c	\
 	ft_putendl_fd.c	\
 	ft_putnbr_fd.c	\
-OBJS	= ${FILES:.c=.o}
-FILES_BONUS = ft_lstadd_back.c 		\ 
+
+OBJS = ${FILES:.c=.o}
+
+FILES_BONUS = ft_lstadd_back.c 		\
 		ft_lstadd_front.c 	\
 		ft_lstclear.c  		\
 		ft_lstdelone.c  	\
@@ -47,6 +49,7 @@ FILES_BONUS = ft_lstadd_back.c 		\
 		ft_lstmap.c  		\
 		ft_lstnew.c  		\
 		ft_lstsize.c		\
+
 OBJ_BONUS = $(FILES_BONUS:.c=.o)
 # explication de la ligne au dessus : take the variable value ${SRCS}, which is a string composed of words separated 
 #by spaces, and for each word, replace the suffix .c with .o
@@ -62,10 +65,12 @@ ${NAME} : ${OBJS}
 
 
 clean :
-	/bin/rm -f ${OBJS} #on clean les  .o
+	rm -f ${OBJS} 
 
-fclean :
-	/bin/rm -f ${NAME}
+#on clean les  .o
+
+fclean : clean
+	rm -f ${NAME}
 
 re : fclean all
 # clean will remove .o files. fclean will remove .o files and the binary. re will do fclean and re-make your binary.
@@ -74,6 +79,7 @@ re : fclean all
 	#gcc -Wall -Werror -Wextra -I ${HEADER} -c $< -o ${<:.c = .o} #je pense que cette ligne est mal ecrite
 	gcc -Wall -Werror -Wextra ${OBJS} # ca marche!!!
 	# je pense qu'on put enlever une partie apres header et aussi le -I avant header
+
 # $<: The filename of the first prerequisite.
 # -I : directory
 

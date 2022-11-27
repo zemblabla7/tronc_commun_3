@@ -39,7 +39,7 @@ char *ft_itoa(int n)
 	unsigned int nb;
 
 	nb = n;
-	len = 1; // car dès que le nb est pile >=10 il faut rajouter 1
+	len = 1; // car dï¿½s que le nb est pile >=10 il faut rajouter 1
 	while (nb >= 10)
 	{
 		nb = nb / 10;
@@ -67,7 +67,8 @@ char *ft_itoa(int n)
 	return(reverse(string));
 }
 
-/* main ne marche pas mais sur C tutor je vois que le resultat est bon
+// main ne marche pas mais sur C tutor je vois que le resultat est bon
+
 int main()
 {
 	int n = 45;
@@ -84,5 +85,5 @@ int main()
 
 	return(0);
 }
-*/
+
 

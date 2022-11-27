@@ -3,7 +3,7 @@
 int ft_lstsize(t_list *lst)
 {
     int len;
-    t_list *content;
+    t_list  *content;
 
     len = 0;
     content = t_list -> first
@@ -12,5 +12,5 @@ int ft_lstsize(t_list *lst)
         content = content -> next;
         len++;
     }
-    return(len);
+    return (len);
 }
