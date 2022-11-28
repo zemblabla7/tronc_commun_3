@@ -80,8 +80,11 @@ bonus : all
 
 #########PENSER A L EFFACER, C EST QU POUR TESTEUR UNIT##########
 so:
+#cc -nostartfiles -fPIC -Wall -Werror -Wextra $(FILES) $(FILES_BONUS)
+#gcc -nostartfiles -shared -o libft.so $(OBJS) $(OBJ_BONUS)
 	cc -nostartfiles -fPIC -Wall -Werror -Wextra $(FILES)
 	gcc -nostartfiles -shared -o libft.so $(OBJS)
+
 #################################################################
 
 # $<: The filename of the first prerequisite.

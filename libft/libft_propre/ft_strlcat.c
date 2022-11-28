@@ -18,7 +18,14 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	j;
 	size_t	l_src;
 
-	i = ft_strlen(dst);
+	if (dst == NULL)
+	{
+		i = 0;
+	}
+	else
+	{
+		i = ft_strlen(dst);
+	}
 	j = ft_strlen(src);
 	l_src = j;
 	if (size == 0 || i > size)
@@ -32,3 +39,19 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dst[i + j] = '\0';
 	return (i + l_src);
 }
+
+/*
+int main ()
+{
+	char src[] = "lalalala";
+	char dest[] = "hola";
+	int n = 50; // qd overflow la vraie fonction fait n'imp et la mienne pas.
+
+	printf("Ma fonction : %lu\n", ft_strlcat(dest, src, n));
+	printf("Ma fonction : %s\n", dest);
+	// printf("Vraie fonction : %lu\n", strlcat(dest, src, n));
+	// printf("Vraie fonction : %s\n", dest);
+
+	return (0);
+}
+*/

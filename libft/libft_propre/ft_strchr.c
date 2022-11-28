@@ -14,32 +14,19 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int		i;
-	char	*temp;
-
-	i = 0;
-	if (c == '\0')
-	{
-		temp = &((char *)s)[ft_strlen(s) + 1];
-		return (temp);
-	}
-	i = 0;
-	while (s[i] != c && s[i] != '\0')
-	{
-		i++;
-	}
-	if (s[i] != '\0')
-	{
-		temp = &((char *)s)[i];
-		return (temp);
-	}
-	/*else if (s[i] != c && s[i + 1] == '\0')
-	{
-		temp = &((char *)s)[i + 1];
-		return (temp);
-	}*/
-	else
-		return (NULL);
+    if (c == 0)
+    {
+        while (*s)
+            s++;
+        return ((char *)s);
+    }
+    while (*s)
+    {
+        if (*s == (char)c)
+            return ((char *)s);
+        s++;
+    }
+    return (NULL);
 }
 
 /*

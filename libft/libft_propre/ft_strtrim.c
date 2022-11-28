@@ -79,6 +79,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		j;
 	char	*newstr;
 
+	if (s1 == NULL)
+		return (NULL);
 	i = checkbeggining((char *)s1, (char *)set);
 	n = checkending((char *)s1, (char *)set);
 	if (i == n)
@@ -117,6 +119,7 @@ int main (int argv, char **argc)
 	return(0);
 }
 */
+
 /*
 int main ()
 {

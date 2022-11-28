@@ -69,7 +69,7 @@ char *ft_itoa(int n)
 }
 
 // main ne marche pas mais sur C tutor je vois que le resultat est bon
-
+/*
 int main()
 {
 	int n = 45;
@@ -86,5 +86,4 @@ int main()
 
 	return(0);
 }
-
-
+*/
