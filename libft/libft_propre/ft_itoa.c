@@ -62,9 +62,10 @@ char *ft_itoa(int n)
 		i++;
 	}
 	if (nb < 10)
-        string[i] = nb + '0';
+		string[i] = nb + '0';
 	string[i + 1] = '\0';
-	return(reverse(string));
+	return (NULL);
+	// return(reverse(string));
 }
 
 // main ne marche pas mais sur C tutor je vois que le resultat est bon
