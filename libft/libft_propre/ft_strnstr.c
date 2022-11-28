@@ -19,18 +19,35 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 	i = 0;
 	j = 0;
+	//if (len < 0)
+		//return (NULL);
 	if (little[0] == '\0')
 		return (((char *)big));
-	if (big[0] == '\0')
-		return (NULL);
 	while ((i + j) <= len)
 	{
 		j = 0;
-		while (big[i + j] == little[j] && little[j] != '\0')
+		while (big[i + j] == little[j] && little[j] != '\0' && (i + j) <= len)
+		{
 			j++;
-		if (little[j] == '\0')
-			return (&((char *)big)[i]);
+			if (little[j] == '\0')
+				return (&((char *)big)[i]);
+		}
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
+
+/*
+int    main(void)
+{
+    char    *s1 = "karl et caro galerent";
+    char    *s2 = "caro";
+    size_t    n = -9;
+
+	//printf("%s\n", (char *)ft_strnstr(((void*)0), "fake", 0));
+
+    //printf("\nRegular Function:::%d:::\n", strnstr(s1, s2, n));
+    printf("Amazing Function:::%s:::\n\n", ft_strnstr(s1, s2, n));
+    return (0);
+}
+*/
