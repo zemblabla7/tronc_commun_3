@@ -34,3 +34,30 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	i = ft_strlen(src);
 	return (i);
 }
+
+/*
+int main ()
+{
+	char dest[] = "..... hambre";
+	char src[] = "Tengo";
+	int size = 1;
+
+	char dest2[] = "..... hambre";
+	char src2[] = "Tengo";
+
+
+	ft_strlcpy(dest, src, size);
+	//printf("%s\n", dest);
+	printf("moi : %s\n", src);
+	printf("%li\n", ft_strlcpy(dest, src, size));
+
+
+	strlcpy(dest, src, size);
+	//printf("%s\n", dest);
+	printf("vraie : %s\n", src);
+	printf("%li\n", strlcpy(dest2, src2, size));
+
+
+	return (0);
+}
+*/

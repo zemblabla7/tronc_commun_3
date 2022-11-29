@@ -102,28 +102,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 }
 
 /*
-int main (int argv, char **argc)
-{
-	//char str[] = "lorem \n ipsum \t dolor \n sit \t amet";
-	//char set[] = "";
-
-	//char str[] = "lorem ipsum dolor sit amet";
-	//char set[] = "lorem amet";
-
-	//char str[] = "ccc";
-	//char set[] = "c";
-
-	if (argv == 3)
-		printf("%s", ft_strtrim(argc[1], argc[2]));
-
-	return(0);
-}
-*/
-
-/*
 int main ()
 {
-	char str[] = "lorem \n ipsum \t dolor \n sit \t amet";
+	char str[] = "llopet \n caro \t leila \n helia \t karl";
 	char set[] = " ";
 
 	printf("%s", ft_strtrim(str, set));

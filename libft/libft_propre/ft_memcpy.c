@@ -26,3 +26,17 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return ((void *)dest);
 }
+
+/*
+int main ()
+{
+    char src[] = "ccccc";
+    char dest[] = "dd";
+
+    ft_memcpy(dest, src, 5);
+    //memcpy(dest, src, 5);
+    printf("%s\n", dest);
+
+    return (0);
+}
+*/

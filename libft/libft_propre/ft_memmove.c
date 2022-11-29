@@ -39,3 +39,19 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return ((void *)dest);
 }
+
+/*
+int main ()
+{
+    char src[] = "carolina";
+    char dest[] = "karl_leila_raph_helia";
+
+    ft_memmove(dest + 1, src, 4);
+    printf("%s\n", dest);
+
+    memmove(dest + 1, src, 4);
+    printf("%s\n", dest);
+
+    return (0);
+}
+*/

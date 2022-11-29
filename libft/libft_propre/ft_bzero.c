@@ -23,3 +23,23 @@ void	ft_bzero(void *s, size_t n)
 		i++;
 	}
 }
+
+/*
+int main ()
+{
+    int i;
+    i = 0;
+    char str[] = "pomme";
+
+    //bzero(str, 2);
+    ft_bzero(str, 2);
+
+    while (i < ft_strlen(str))
+    {
+        printf("%c\n", str[i]);
+        i++;
+    }
+
+    return (0);
+}
+*/

@@ -27,3 +27,28 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
+
+/*
+int main ()
+{
+    char str1[] = "menjar";
+    char str2[] = "menhir";
+    //size_t n = 1; // pour n = 0 et n = 1 : moi = 0 (vrai) / vraie fx = 0 (vrai))
+    size_t n = 3; // pour n = 2 et n = 3 : moi = 2 (faux) /vraie fx = 0 (vrai)
+    //size_t n = 4; // moi : 2 (faux) / vraie fx : 4 (faux)
+    //size_t n = 5; // moi : 2 (faux) / vraie fx : 5 (faux)
+    //size_t n = 6; // moi : 2 (faux) / vraie fx : 6 (faux) (overflow)
+
+    ft_memcmp(str1, str2, n);
+    printf("Ma fonction : %d\n", ft_memcmp(str1, str2, n));
+    printf("Ma fonction str1 : %s\n", str1);
+    printf("Ma fonction str2 : %s\n", str2);
+
+    memcmp(str1, str2, n);
+    printf("Vraie fonction : %d\n", memcmp(str1, str2, n));
+    printf("Vraie fonction str1 : %s\n", str1);
+    printf("Vraie fonction str2 :%s\n", str2);
+
+    return(0);
+}
+*/

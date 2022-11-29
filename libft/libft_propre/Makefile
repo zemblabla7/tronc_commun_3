@@ -45,11 +45,11 @@ FILES_BONUS = ft_lstadd_back.c 		\
 		ft_lstlast.c  		\
 		ft_lstnew.c  		\
 		ft_lstsize.c		\
-		ft_lstclear.c		\
 		ft_lstiter.c		\
+		ft_lstclear.c		\
 		ft_lstmap.c			\
 
-OBJ_BONUS = $(FILES_BONUS:.c=.o)
+OBJS_BONUS = $(FILES_BONUS:.c=.o)
 # explication de la ligne au dessus : take the variable value ${SRCS}, which is a string composed of words separated
 #by spaces, and for each word, replace the suffix .c with .o
 
@@ -62,32 +62,35 @@ ${NAME} : ${OBJS}
 #l'intention du compilateur, sans autre forme de procès. Mais un fichier « *.a » peut contenir n'importe quoi. Ce n'est
 #pas forcément en soit une bibliothèque.
 
-${NAME_BONUS} : $(OBJ_BONUS)
-	ar rc ${NAME_BONUS} $(OBJ_BONUS)
+#${NAME_BONUS} : $(OBJ_BONUS)
+#	ar rc ${NAME_BONUS} $(OBJ_BONUS)
 
 clean :
-	rm -f ${OBJS} $(OBJ_BONUS)
+	rm -f ${OBJS} 
+#$(OBJS_BONUS)
+#effacer obj_bonus ici?? car fclean efface tout ce que clean n efface pas??
 
 #on clean les  .o
 
 fclean : clean
-	rm -f ${NAME} ${NAME_BONUS}
+	rm -f ${NAME} ${OBJS_BONUS}
+#et non pas ${NAME_BONUS} car rien ne porte ce nom
 
 re : fclean all
 # clean will remove .o files. fclean will remove .o files and the binary. re will do fclean and re-make your binary.
 
-bonus : $(OBJ_BONUS)
-	ar rc ${NAME} ${NAME_BONUS}
+bonus : $(OBJS_BONUS)
+	ar rc ${NAME} ${OBJS_BONUS}
 
 .o .c:
 	#gcc -Wall -Werror -Wextra -I ${HEADER} -c $< -o ${<:.c = .o} #je pense que cette ligne est mal ecrite
-	gcc -Wall -Werror -Wextra ${OBJS} # ca marche!!!
+	cc -Wall -Werror -Wextra ${OBJS} # ca marche!!!
 	# je pense qu'on put enlever une partie apres header et aussi le -I avant header
 
 #########PENSER A L EFFACER, C EST QU POUR TESTEUR UNIT##########
-so:
-	cc -nostartfiles -fPIC -Wall -Werror -Wextra $(FILES) $(FILES_BONUS)
-	gcc -nostartfiles -shared -o libft.so $(OBJS) $(OBJ_BONUS)
+#so:
+#	cc -nostartfiles -fPIC -Wall -Werror -Wextra $(FILES) $(FILES_BONUS)
+#	gcc -nostartfiles -shared -o libft.so $(OBJS) $(OBJ_BONUS)
 	#cc -nostartfiles -fPIC -Wall -Werror -Wextra $(FILES)
 	#gcc -nostartfiles -shared -o libft.so $(OBJS)
 
@@ -96,4 +99,4 @@ so:
 # $<: The filename of the first prerequisite.
 # -I : directory
 
-.Phony : all, clean, fclean, reMAKE
+.Phony : all, clean, fclean, reMAKE, bonus

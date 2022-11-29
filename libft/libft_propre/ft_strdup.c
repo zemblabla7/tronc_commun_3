@@ -29,3 +29,15 @@ char	*ft_strdup(const char *s)
 	dest[i] = '\0';
 	return (&dest[0]);
 }
+
+/*
+int main ()
+{
+	char src[] = "hola carolina";
+
+	printf("Ma fonction : %s\n", ft_strdup(src));
+	printf("Vraie fonction : %s\n", strdup(src));
+
+	return (0);
+}
+*/

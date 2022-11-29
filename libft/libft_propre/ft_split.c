@@ -100,3 +100,21 @@ char	**ft_split(char const *s, char c)
 	}
 	return (string);
 }
+
+/*
+int main()
+{
+	char s[] = "ca ro";
+	char c = ' ';
+
+	int i = 0;
+	char **split;
+	split = ft_split(s, c);
+	while(split[i])
+    {
+        printf("%s\n", split[i]);
+        i++;
+    }
+    return 0;
+}
+*/

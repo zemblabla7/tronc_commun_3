@@ -24,3 +24,18 @@ void	*ft_memset(void *s, char c, size_t n)
 	}
 	return (s);
 }
+
+/*
+int main ()
+{
+    char str[] = "mandarine pomme banane prune";
+
+    memset(str, '.', 10);
+    printf("%s\n", str);
+
+    ft_memset(str, '.', 10);
+    printf("%s\n", str);
+
+    return (0);
+}
+*/

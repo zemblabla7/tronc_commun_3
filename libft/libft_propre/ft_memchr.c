@@ -27,3 +27,17 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
+
+/*
+int main ()
+{
+    char str[] = "carolina";
+    unsigned char c = 'a';
+    size_t n = 3;
+
+    printf("ma fonction : %s\n", (char *)ft_memchr(str, c, n));
+    printf("vraie fonction : %s\n", (char *)memchr(str, c, n));
+
+    return (0);
+}
+*/

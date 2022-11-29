@@ -46,7 +46,7 @@ int	ft_atoi(const char *nptr)
    {
    if (ac == 2)
    {
-   printf("\nRegular Function::::%d::::\n", atoi(av[1])); 
+   printf("\nRegular Function::::%d::::\n", atoi(av[1]));
    printf("Amazing Function::::%d::::\n\n", ft_atoi(av[1]));
    return (0);
    }

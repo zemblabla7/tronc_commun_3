@@ -6,7 +6,7 @@
 /*   By: casomarr <casomarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 13:19:19 by casomarr          #+#    #+#             */
-/*   Updated: 2022/11/29 13:19:49 by casomarr         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:55:49 by casomarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,17 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	while (lst != NULL)
+	t_list *temp;
+
+	if ((*lst) == NULL || del == NULL)
+		return ;
+	else
 	{
-		del(lst);
-    	free(lst);
-		lst = lst -> next;
+		while ((*lst)->next)
+		{
+			temp = (*lst)->next;
+			ft_lstdelone((*lst), del);
+			(*lst) = temp;
+		}
 	}
-	*lst -> next = NULL;
 }
