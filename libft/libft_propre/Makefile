@@ -45,6 +45,9 @@ FILES_BONUS = ft_lstadd_back.c 		\
 		ft_lstlast.c  		\
 		ft_lstnew.c  		\
 		ft_lstsize.c		\
+		ft_lstclear.c		\
+		ft_lstiter.c		\
+		ft_lstmap.c			\
 
 OBJ_BONUS = $(FILES_BONUS:.c=.o)
 # explication de la ligne au dessus : take the variable value ${SRCS}, which is a string composed of words separated
@@ -59,19 +62,22 @@ ${NAME} : ${OBJS}
 #l'intention du compilateur, sans autre forme de procès. Mais un fichier « *.a » peut contenir n'importe quoi. Ce n'est
 #pas forcément en soit une bibliothèque.
 
+${NAME_BONUS} : $(OBJ_BONUS)
+	ar rc ${NAME_BONUS} $(OBJ_BONUS)
 
 clean :
-	rm -f ${OBJS}
+	rm -f ${OBJS} $(OBJ_BONUS)
 
 #on clean les  .o
 
 fclean : clean
-	rm -f ${NAME}
+	rm -f ${NAME} ${NAME_BONUS}
 
 re : fclean all
 # clean will remove .o files. fclean will remove .o files and the binary. re will do fclean and re-make your binary.
 
-bonus : all
+bonus : $(OBJ_BONUS)
+	ar rc ${NAME} ${NAME_BONUS}
 
 .o .c:
 	#gcc -Wall -Werror -Wextra -I ${HEADER} -c $< -o ${<:.c = .o} #je pense que cette ligne est mal ecrite
@@ -80,10 +86,10 @@ bonus : all
 
 #########PENSER A L EFFACER, C EST QU POUR TESTEUR UNIT##########
 so:
-#cc -nostartfiles -fPIC -Wall -Werror -Wextra $(FILES) $(FILES_BONUS)
-#gcc -nostartfiles -shared -o libft.so $(OBJS) $(OBJ_BONUS)
-	cc -nostartfiles -fPIC -Wall -Werror -Wextra $(FILES)
-	gcc -nostartfiles -shared -o libft.so $(OBJS)
+	cc -nostartfiles -fPIC -Wall -Werror -Wextra $(FILES) $(FILES_BONUS)
+	gcc -nostartfiles -shared -o libft.so $(OBJS) $(OBJ_BONUS)
+	#cc -nostartfiles -fPIC -Wall -Werror -Wextra $(FILES)
+	#gcc -nostartfiles -shared -o libft.so $(OBJS)
 
 #################################################################
 

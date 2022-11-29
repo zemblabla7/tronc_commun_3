@@ -3,8 +3,8 @@
 t_list	*ft_lstlast(t_list *lst)
 {
 	if (lst == NULL)
-			return(NULL)
-	while (*lst != NULL) // ou while (lst -> next)
+			return (NULL);
+	while (lst != NULL) // ou while (lst -> next)
 	{
 		lst = lst -> next;
 	}
