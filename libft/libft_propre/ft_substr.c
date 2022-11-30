@@ -19,6 +19,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (len < 0 || s == NULL)
 		return (NULL);
+	if (len > ft_strlen(s) - start)
+		len = ft_strlen(s) - start;
 	if (start >= ft_strlen(s))
 	{
 		new_str = malloc(sizeof(char) * 1);
@@ -31,7 +33,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (new_str == NULL)
 		return (NULL);
 	i = 0;
-	while (i < len && s[start] != '\0')
+	while (i < len && ((char *)s)[start] != '\0')
 	{
 		new_str[i++] = ((char *)s)[start++];
 	}
@@ -42,8 +44,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 /*
 int main()
 {
-	char *str = "lorem ipsum dolor sit amet";
-	printf("%s", ft_substr(str, 400, 20));
+	char *str = strdup("0123456789");
+	printf("%s", ft_substr(str, 9, 10));
+
+	char *new_str = ft_substr(str, 400, 2);
+	free(new_str);
 
 	return 0;
 }

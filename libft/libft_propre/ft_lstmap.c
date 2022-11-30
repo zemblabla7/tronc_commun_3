@@ -6,7 +6,7 @@
 /*   By: casomarr <casomarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 13:19:23 by casomarr          #+#    #+#             */
-/*   Updated: 2022/11/29 15:34:38 by casomarr         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:31:48 by casomarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list *new_list;
-	t_list *new_content;
+	t_list	*new_list;
+	t_list	*new_content;
 
 	if (lst = NULL, f = NULL, del = NULL)
 		return (NULL);

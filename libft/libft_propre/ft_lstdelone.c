@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: casomarr <casomarr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/30 15:19:04 by casomarr          #+#    #+#             */
+/*   Updated: 2022/11/30 15:19:04 by casomarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
 	if (lst == NULL || del == NULL)
-		return ; // peut etre que comme void faut pas de return et donc les safety doivent etre faits de fa�on � ce que le code se deroule seulement si pas null et sinon rien ou "return;" seul
-	lst = lst -> next; // on met la valeur apres lst comme premiere valeur avant de delete lst
+		return ;
+	lst = lst -> next;
 	del(lst);
 	free(lst);
 }

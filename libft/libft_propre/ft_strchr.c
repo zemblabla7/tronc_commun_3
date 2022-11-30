@@ -14,42 +14,30 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-    if (c == 0)
-    {
-        while (*s)
-            s++;
-        return ((char *)s);
-    }
-    while (*s)
-    {
-        if (*s == (char)c)
-            return ((char *)s);
-        s++;
-    }
-    return (NULL);
+	if (c == 0)
+	{
+		while (*s)
+			s++;
+		return ((char *)s);
+	}
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	return (NULL);
 }
 
 /*
 int main ()
 {
-    const char str[] = "Tengo hambre";
-	//const char str[] = "\0";
-    //char c = 'e'; // marche
-    //char c = 'f'; // marche
-    char c = '\0'; //(doit retourner pointeur sur '\0' et non NULL). Marche.
+	const char str[] = "Tengo hambre";
+	char c = 'e';
 
-    // cas ou il y a la lettre dans str
-    //printf("%s\n", ft_strchr(str, c));
-    //printf("%s\n", strchr(str, c));
+	printf("%s\n", ft_strchr(str, c));
+	printf("%s\n", strchr(str, c));
 
-    // cas ou on cherche un caractere pas la : renvoie NIL ( = pointeur sur NULL)
-    printf("%s\n", (char *)ft_strchr(str, c));
-    printf("%s\n", (char *)strchr(str, c));
-
-    // cas ou on cherche un caractere pas la : doit renvoyer l'adresse de \0. Ca marche :)
-    //printf("%p\n", ft_strchr(str, c));
-    //printf("%p\n", strchr(str, c));
-
-    return (0);
+	return (0);
 }
 */

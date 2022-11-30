@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-int length(n)
+int	length(int n)
 {
-	int len;
-	unsigned int nb;
+	int				len;
+	unsigned int	nb;
 
 	len = 0;
 	if (n < 0)
@@ -33,13 +33,14 @@ int length(n)
 	return (len);
 }
 
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-	char *string;
-	int len;
-	unsigned int nb;
+	char			*string;
+	int				len;
+	unsigned int	nb;
+
 	len = length(n);
-	string = malloc(sizeof(char) * (len + 1));
+	string = malloc(sizeof(char) * (len + 2));
 	if (string == NULL)
 		return (NULL);
 	if (n < 0)
@@ -58,11 +59,11 @@ char *ft_itoa(int n)
 	if (nb < 10)
 		string[len] = nb + '0';
 	string[length(n) + 1] = '\0';
-	return(string);
+	return (string);
 }
 
 /*
-int main()
+int	main()
 {
 	int n = 45;
 

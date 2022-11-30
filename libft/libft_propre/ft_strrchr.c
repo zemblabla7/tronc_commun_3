@@ -19,7 +19,7 @@ char	*ft_strrchr(const char *s, int c)
 	i = ft_strlen(s);
 	while (i >= 0)
 	{
-		if (s[i] == c)
+		if (s[i] == (char)c)
 			return (&((char *)s)[i]);
 		i--;
 	}
@@ -29,8 +29,9 @@ char	*ft_strrchr(const char *s, int c)
 /*
 int main ()
 {
-	printf("%s\n", ft_strrchr("bonjour", 'o'));
-	//printf("%s\n", strrchr("bonjour", 'o'));
+	//printf("%s\n", ft_strrchr("bonjour", 'o'));
+	//printf("%s\n", ft_strrchr("bonjour", 'b' + 256));
+	printf("%s\n", strrchr("bonjour", 'b' + 256));
 	return 0;
 }
 */

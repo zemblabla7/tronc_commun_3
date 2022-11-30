@@ -19,7 +19,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if (((char *)s)[i] == c)
+		if (((char *)s)[i] == (char)c)
 		{
 			return (&((void *)s)[i]);
 		}
@@ -32,7 +32,8 @@ void	*ft_memchr(const void *s, int c, size_t n)
 int main ()
 {
     char str[] = "carolina";
-    unsigned char c = 'a';
+    //unsigned char c = 'a';
+	int c = 2 + 256;
     size_t n = 3;
 
     printf("ma fonction : %s\n", (char *)ft_memchr(str, c, n));

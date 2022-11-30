@@ -46,7 +46,7 @@ static int	checkbeggining(char *str, char *set)
 		}
 		i++;
 	}
-	return (ft_strlen(str));
+	return (EXIT_SUCCESS);
 }
 
 static int	checkending(char *str, char *set)
@@ -69,45 +69,51 @@ static int	checkending(char *str, char *set)
 		}
 		n--;
 	}
-	return (ft_strlen(str));
+	return (EXIT_SUCCESS);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
-	int		n;
+	size_t	i;
+	size_t	n;
+	size_t	size;
 	int		j;
 	char	*newstr;
 
-	if (s1 == NULL)
-		return (NULL);
 	i = checkbeggining((char *)s1, (char *)set);
 	n = checkending((char *)s1, (char *)set);
-	if (i == n)
+	size = n - i + 1;
+	if (s1 == NULL || (i == EXIT_SUCCESS && n == EXIT_SUCCESS)) // pas de string ou que des separateurs
+	{
 		newstr = malloc(sizeof(char) * 1);
-	else
-		newstr = malloc(sizeof(char) * ((n - i) + 1));
+		if (newstr == NULL)
+			return (NULL);
+		newstr[0] = '\0';
+		return (newstr);
+	}
+	else if ((i == 0 && n == ft_strlen(s1)) || set == NULL) // pas de separateurs
+		newstr = malloc(sizeof(char) * size);
+	else // autres : choses a trimer
+		newstr = malloc(sizeof(char) * size + 1);
 	if (newstr == NULL)
 		return (NULL);
 	j = 0;
-	if (i == n)
-		newstr[0] = '\0';
-	else
-	{
-		while (i <= n)
-			newstr[j++] = s1[i++];
-		newstr[j] = '\0';
-	}
+	while (i <= n)
+		newstr[j++] = s1[i++];
+	newstr[j] = '\0';
 	return (newstr);
 }
 
 /*
 int main ()
 {
-	char str[] = "llopet \n caro \t leila \n helia \t karl";
-	char set[] = " ";
+	char str[] = " xxxxtripouile";
+	char set[] = " x";
+	char *new_str = ft_strtrim(str, set);
 
-	printf("%s", ft_strtrim(str, set));
+	printf("%s", new_str);
+
+	free(new_str);
 
 	return(0);
 }
