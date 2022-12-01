@@ -74,16 +74,16 @@ static int	checkending(char *str, char *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
-	size_t	n;
-	size_t	size;
+	int	i;
+	int	n;
+	int	size;
 	int		j;
 	char	*newstr;
 
 	i = checkbeggining((char *)s1, (char *)set);
 	n = checkending((char *)s1, (char *)set);
 	size = n - i + 1;
-	if (s1 == NULL || (i == EXIT_SUCCESS && n == EXIT_SUCCESS)) // pas de string ou que des separateurs
+	if (s1 == NULL || (i == EXIT_SUCCESS && n == EXIT_SUCCESS))
 	{
 		newstr = malloc(sizeof(char) * 1);
 		if (newstr == NULL)
@@ -91,9 +91,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		newstr[0] = '\0';
 		return (newstr);
 	}
-	else if ((i == 0 && n == ft_strlen(s1)) || set == NULL) // pas de separateurs
-		newstr = malloc(sizeof(char) * size);
-	else // autres : choses a trimer
+	else
 		newstr = malloc(sizeof(char) * size + 1);
 	if (newstr == NULL)
 		return (NULL);
@@ -107,8 +105,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 /*
 int main ()
 {
-	char str[] = " xxxxtripouile";
-	char set[] = " x";
+	char str[] = "lorem \n ipsum \t dolor \n sit \t amet";
+	char set[] = " ";
 	char *new_str = ft_strtrim(str, set);
 
 	printf("%s", new_str);
