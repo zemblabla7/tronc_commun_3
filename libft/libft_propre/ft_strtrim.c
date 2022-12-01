@@ -14,7 +14,7 @@
 
 static int	checkset(char c, char *set)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (set[i])
@@ -26,93 +26,39 @@ static int	checkset(char c, char *set)
 	return (0);
 }
 
-static int	checkbeggining(char *str, char *set)
-{
-	int	i;
-	int	found;
-
-	i = 0;
-	found = 0;
-	while (str[i])
-	{
-		if (checkset(str[i], set) == 1)
-			found = 1;
-		if (checkset(str[i], set) == 0)
-		{
-			if (found == 1)
-				return (i);
-			else
-				return (0);
-		}
-		i++;
-	}
-	return (EXIT_SUCCESS);
-}
-
-static int	checkending(char *str, char *set)
-{
-	int	n;
-	int	found;
-
-	n = ft_strlen(str) - 1;
-	found = 0;
-	while (n >= 0)
-	{
-		if (checkset(str[n], set) == 1)
-			found = 1;
-		if (checkset(str[n], set) == 0)
-		{
-			if (found == 1)
-				return (n);
-			else
-				return (ft_strlen(str));
-		}
-		n--;
-	}
-	return (EXIT_SUCCESS);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int	i;
-	int	n;
-	int	size;
-	int		j;
+	size_t	start;
+	size_t	end;
+	size_t	i;
 	char	*newstr;
 
-	i = checkbeggining((char *)s1, (char *)set);
-	n = checkending((char *)s1, (char *)set);
-	size = n - i + 1;
-	if (s1 == NULL || (i == EXIT_SUCCESS && n == EXIT_SUCCESS))
-	{
-		newstr = malloc(sizeof(char) * 1);
-		if (newstr == NULL)
-			return (NULL);
-		newstr[0] = '\0';
-		return (newstr);
-	}
-	else
-		newstr = malloc(sizeof(char) * size + 1);
+	if (s1 == NULL)
+		return (NULL);
+	if (set == NULL)
+		return (ft_strdup(s1));
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] != '\0' && checkset(s1[start], (char *)set))
+		start++;
+	while (end > start && checkset(s1[end -1], (char *)set))
+		end--;
+	newstr = malloc(sizeof(char) * (end - start + 1));
 	if (newstr == NULL)
 		return (NULL);
-	j = 0;
-	while (i <= n)
-		newstr[j++] = s1[i++];
-	newstr[j] = '\0';
+	i = 0;
+	while (start < end)
+		newstr[i++] = s1[start++];
+	newstr[i] = '\0';
 	return (newstr);
 }
 
-/*
-int main ()
-{
-	char str[] = "lorem \n ipsum \t dolor \n sit \t amet";
-	char set[] = " ";
-	char *new_str = ft_strtrim(str, set);
-
-	printf("%s", new_str);
-
-	free(new_str);
-
-	return(0);
-}
-*/
+// int main ()
+// {
+// 	char str[] = "lorem \n ipsum \t dolor \n sit \t amet";
+// 	char set[] = " ";
+// 	char *new_str = ft_strtrim("123", );
+// 	printf("%s", new_str);
+// 	free(new_str);
+// 	return(0);
+// }

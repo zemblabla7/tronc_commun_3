@@ -20,7 +20,6 @@
 # include <stdio.h>
 # include <string.h>
 # include <ctype.h>
-# include <stdint.h>
 
 int		ft_atoi(const char *nptr);
 int		ft_isalnum(int c);
